@@ -13,7 +13,7 @@ int input[TEST_SIZE][4] = {
 };
 
 int expected_output[TEST_SIZE] = {
-  3, 2, 1, 5, 4, 2
+  3, 2, 2, 5, 4, 2
 };
 
 int main(int argc, char *argv[]) {
