@@ -17,19 +17,19 @@ test-build-command: | # 테스트 빌드 커맨드 / defect4cpp 기준 meta.json
   autoheader
   autoconf
   ./configure --with-tcsetpgrp
-  sed -i "/^name=zsh\/zpty/ s/link=no/link=static/" config.modules
+  sed -i '/^name=zsh\/zpty/ s/link=no/link=static/' config.modules
   make
-  sed -i "s|sleep 1;||" Test/Makefile
-  find Test -type f -name "*.ztst" -exec basename {} .ztst \; | sort -t "\\0" > AUTOMAKE_TEST_CASE.output
+  sed -i 's|sleep 1;||' Test/Makefile
+  find Test -type f -name '*.ztst' -exec basename {} .ztst \; | sort -t '\\0' > AUTOMAKE_TEST_CASE.output
 
 coverage-build-command: | # 커버리지 빌드 커맨드 / defect4cpp 기준 meta.json의 내용이 필요(SBFL: gcov)
   autoheader
   autoconf
-  ./configure --with-tcsetpgrp --enable-cflags=\"--coverage -g -O0\" --enable-libs=\"-lgcov\"
-  sed -i \"/^name=zsh\/zpty/ s/link=no/link=static/\" config.modules
+  ./configure --with-tcsetpgrp --enable-cflags='--coverage -g -O0' --enable-libs='-lgcov'
+  sed -i '/^name=zsh\/zpty/ s/link=no/link=static/' config.modules
   make
-  sed -i \"s|sleep 1;||\" Test/Makefile
-  find Test -type f -name \"*.ztst\" -exec basename {} .ztst \; | sort -t \"\\0\" > AUTOMAKE_TEST_CASE.output
+  sed -i 's|sleep 1;||' Test/Makefile
+  find Test -type f -name '*.ztst' -exec basename {} .ztst \; | sort -t '\\0' > AUTOMAKE_TEST_CASE.output
 
 # 테스트 type이 문제: gtest의 경우 원하는 테스트를 실행할 수 있으니 문제가 없음
 # 그렇지 않으면 test-case에 실행할 테스트 번호를 range로 하도록함
@@ -62,7 +62,7 @@ test-list: | # 테스트 리스트 커맨드 / 테스트를 하나씩 실행하�
   make -s TESTNUM=$(sed -n "24p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "25p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "26p" < AUTOMAKE_TEST_CASE.output) check
-  make -s TESTNUM=$(sed -n "27p" < AUTOMAKE_TEST_CASE.output) check
+  make -s TESTNUM=$(sed -n "28p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "29p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "30p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "31p" < AUTOMAKE_TEST_CASE.output) check
@@ -90,7 +90,6 @@ test-list: | # 테스트 리스트 커맨드 / 테스트를 하나씩 실행하�
   make -s TESTNUM=$(sed -n "54p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "55p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "56p" < AUTOMAKE_TEST_CASE.output) check
-  make -s TESTNUM=$(sed -n "57p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "58p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "59p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "60p" < AUTOMAKE_TEST_CASE.output) check
