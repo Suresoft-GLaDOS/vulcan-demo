@@ -8,9 +8,10 @@ docker-image:
 # predefined docker-image를 사용하되, 추가적인 설정이 필요한 경우 이렇게 정의
 extra-build-env-setting-commands: 
 
-test-candidates:
+test-candidates: |
+  Src/exec.c
 
-time-out: 3600
+time-out: 10800
 max-patch-number : 500
 
 test-build-command: | # 테스트 빌드 커맨드 / defect4cpp 기준 meta.json의 내용이 필요
@@ -69,7 +70,6 @@ test-list: | # 테스트 리스트 커맨드 / 테스트를 하나씩 실행하�
   make -s TESTNUM=$(sed -n "32p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "33p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "34p" < AUTOMAKE_TEST_CASE.output) check
-  make -s TESTNUM=$(sed -n "35p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "36p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "37p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "39p" < AUTOMAKE_TEST_CASE.output) check
