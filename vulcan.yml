@@ -11,8 +11,8 @@ extra-build-env-setting-commands:
 test-candidates: |
   Src/exec.c
 
-time-out: 10800
-max-patch-number : 500
+time-out: 86400
+max-patch-number : 5000
 
 test-build-command: | # 테스트 빌드 커맨드 / defect4cpp 기준 meta.json의 내용이 필요
   autoheader
@@ -70,7 +70,7 @@ test-list: | # 테스트 리스트 커맨드 / 테스트를 하나씩 실행하�
   make -s TESTNUM=$(sed -n "32p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "33p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "34p" < AUTOMAKE_TEST_CASE.output) check
-  make -s TESTNUM=$(sed -n "36p" < AUTOMAKE_TEST_CASE.output) check
+  make -s TESTNUM=$(sed -n "35p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "37p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "39p" < AUTOMAKE_TEST_CASE.output) check
   make -s TESTNUM=$(sed -n "40p" < AUTOMAKE_TEST_CASE.output) check
