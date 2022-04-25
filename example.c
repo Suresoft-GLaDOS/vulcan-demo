@@ -8,16 +8,21 @@ enum operator {
     DIV
 };
 
+int add(x, y) { return x + y;}
+int sub(x, y) { return x - y;}
+int mul(x, y) { return x * y;}
+int div(x, y) { return x / y;}
+
 int calc(int op, int x, int y) {
     int ret = INT_MIN;
     if (op == ADD) {
-        ret = x + y;
+        ret = add(x, y);
     } else if (op == SUB) {
-        ret = x - y;
+        ret = sub(x, y);
     } else if (op == MUL) {
-        ret = x + y; // buggy
+        ret = add(x, y);
     } else if (op == DIV) {
-        ret = x / y;
+        ret = div(x, y);
     }
     return ret;
 }
