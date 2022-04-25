@@ -20,7 +20,8 @@ int calc(int op, int x, int y) {
     } else if (op == SUB) {
         ret = sub(x, y);
     } else if (op == MUL) {
-        ret = add(x, y);
+        ret = mul(x, y);
+
     } else if (op == DIV) {
         ret = div(x, y);
     }
