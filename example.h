@@ -1,0 +1,1 @@
+int calc(int op, int x, int y);
