@@ -1,4 +1,4 @@
-name: Vulcan Demo(example-5)
+name: Vulcan Demo(example-6)
 
 on:
   workflow_dispatch:
