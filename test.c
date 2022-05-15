@@ -8,18 +8,27 @@ int input[TEST_SIZE] = {
   2, 3, 4, 5, 6, 7, 8, 10, 15, 20,
 };
 
-int expected_output[TEST_SIZE] = {
-  2, 14, 15, 73, 117, 719, 1121, 11133, 7111219, 1111111799
+int expected_min[TEST_SIZE] = {
+  1, 7, 4, 2, 6, 8, 10, 22, 108, 688,
+};
+
+int expected_max[TEST_SIZE] = {
+  1, 7, 11, 71, 111, 711, 1111, 11111, 7111111, 1111111111
 };
 
 int main(int argc, char *argv[]) {
     int test_index = atoi(argv[1]);
-    int actual_output = func(input[test_index]);
-    printf("actual %d, expected %d\n", actual_output, expected_output[test_index]);
-    if (actual_output == expected_output[test_index]) {
+    int min = get_min(input[test_index]);
+    int max = get_max(input[test_index]);
+    printf("input = %d\n", input[test_index]);
+    printf("actual min: %d,\n expected min: %d\n", min, expected_min[test_index]);
+    printf("actual max: %d,\n expected max: %d\n", max, expected_max[test_index]);
+    if (min == expected_min[test_index] &&
+    max == expected_max[test_index] ) {
         printf("PASSED\n");
+        return 0;
     } else {
         printf("FAILED\n");
+        return 1;
     }
-    return actual_output == expected_output[test_index] ? 0 : 1;
 }

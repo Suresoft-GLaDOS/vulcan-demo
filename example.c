@@ -10,7 +10,7 @@ ll min(ll a, ll b) {
     if (a < b)
         return a;
     else
-        return b;
+        return a; // buggy
 }
 
 int get_min(int n) {
@@ -28,21 +28,18 @@ int get_min(int n) {
 
 int get_max(int n) {
     if (n <= 3) {
-        if ( n != 2) {
+        if (n == 2) {
+            return 1;
+        } else {
             return 7;
         }
-        // if (n == 2) {
-        //     return 1;
-        // } else {
-        //     return 7;
-        // }
     } else {
         int temp = 0;
         if ( n % 2 == 1 ) {
             temp = 7;
         }
         for (int i = 0 ; i < (n / 2) - (n % 2) ; i++ ) {
-            temp = temp * 10 + 1; // buggy
+            temp = temp * 10 + 1;
         }
         return temp;
     }
