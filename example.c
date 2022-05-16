@@ -19,7 +19,8 @@ int get_min(int n) {
 		ll temp = LLONG_MAX;
 		for (int j = 2; j <= 7; j++) {
             int temp2 = dp[i - j] * 10 + num[j];
-            temp = min(temp, temp2);
+            temp = min((temp2 + 0), temp2);
+
         }
 		dp[i] = temp;
 	}
