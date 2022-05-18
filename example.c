@@ -200,7 +200,8 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
     if (i + step < re_len && is_quantifier(re + i + step)) {
       DBG(("QUANTIFIER: [%.*s]%c [%.*s]\n", step, re + i,
            re[i + step], s_len - j, s + j));
-      if (re[i + step] == '?') {
+    //   if (re[i + step] == '?') { // buggy
+      if (re[i + step] == '!') {
         int result = bar(re + i, step, s + j, s_len - j, info, bi);
         j += result > 0 ? result : 0;
         i++;
@@ -235,7 +236,7 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
          * Even if we found one or more pattern, this branch will be executed,
          * changing the next captures.
          */
-        if (n1 < 0 && n1 < 0 && re[i + step] == '*' &&
+        if (n1 < 0 && n2 < 0 && re[i + step] == '*' &&
             (n2 = bar(re + ni, re_len - ni, s + j, s_len - j, info, bi)) > 0) {
           nj = j + n2;
         }
@@ -279,8 +280,7 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
 
       DBG(("CAPTURED [%.*s] [%.*s]:%d\n", step, re + i, s_len - j, s + j, n));
       FAIL_IF(n < 0, n);
-    //   if (info->caps != NULL && n > 0) {
-      if (info->caps != NULL) {
+      if (info->caps != NULL && n > 0) {
         info->caps[bi - 1].ptr = s + j;
         info->caps[bi - 1].len = n;
       }
