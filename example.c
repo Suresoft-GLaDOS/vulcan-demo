@@ -200,12 +200,12 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
     if (i + step < re_len && is_quantifier(re + i + step)) {
       DBG(("QUANTIFIER: [%.*s]%c [%.*s]\n", step, re + i,
            re[i + step], s_len - j, s + j));
-    //   if (re[i + step] == '?') { // buggy
-      if (re[i + step] == '!') {
+      if (re[i + step] == '?') {
         int result = bar(re + i, step, s + j, s_len - j, info, bi);
         j += result > 0 ? result : 0;
         i++;
-      } else if (re[i + step] == '+' || re[i + step] == '*') {
+      // } else if (re[i + step] == '+' || re[i + step] == '*') { // buggy
+      } else if (re[i + step] == '+') {
         int j2 = j, nj = j, n1, n2 = -1, ni, non_greedy = 0;
 
         /* Points to the regexp code after the quantifier */
