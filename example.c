@@ -204,14 +204,13 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
         int result = bar(re + i, step, s + j, s_len - j, info, bi);
         j += result > 0 ? result : 0;
         i++;
-      // } else if (re[i + step] == '+' || re[i + step] == '*') { // buggy
-      } else if (re[i + step] == '+') {
+      } else if (re[i + step] == '+' || re[i + step] == '*') {
         int j2 = j, nj = j, n1, n2 = -1, ni, non_greedy = 0;
 
         /* Points to the regexp code after the quantifier */
         ni = i + step + 1;
         if (ni < re_len && re[ni] == '?') {
-          non_greedy = 1;
+        //   non_greedy = 1; // buggy
           ni++;
         }
 
