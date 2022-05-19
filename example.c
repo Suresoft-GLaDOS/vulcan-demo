@@ -207,6 +207,7 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
       } else if (re[i + step] == '+' || re[i + step] == '*') {
         int j2 = j, nj = j, n1, n2 = -1, ni, non_greedy = 0;
 
+        non_greedy = 0;
         /* Points to the regexp code after the quantifier */
         ni = i + step + 1;
         if (ni < re_len && re[ni] == '?') {
