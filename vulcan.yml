@@ -1,0 +1,307 @@
+--- # Start
+name: example
+
+# 유저의 github 저장소 정보
+url:
+docker-image: 
+
+# predefined docker-image를 사용하되, 추가적인 설정이 필요한 경우 이렇게 정의
+extra-build-env-setting-commands: 
+
+test-candidates: |
+  libcsv.c
+
+time-out: 3600
+max-patch-number : 500
+
+test-build-command: | # 테스트 빌드 커맨드 / defect4cpp 기준 meta.json의 내용이 필요
+  mkdir build && cd build && cmake ..
+  make
+  make test
+
+coverage-build-command: | # 커버리지 빌드 커맨드 / defect4cpp 기준 meta.json의 내용이 필요(SBFL: gcov)
+  mkdir build && cd build && cmake ..
+  make CFLAGS="--coverage"
+  make test
+
+# 테스트 type이 문제: gtest의 경우 원하는 테스트를 실행할 수 있으니 문제가 없음
+# 그렇지 않으면 test-case에 실행할 테스트 번호를 range로 하도록함
+# 테스트 실행 역시 range안에 있는 테스트들만 실행하도록 묶어서 command를 부르거나 여러번 불러야함
+test-type: automake
+test-list: | # 테스트 리스트 커맨드 / 테스트를 하나씩 실행하기 위해 테스트 리스트를 출력해주는 내용 필요
+  tests/test_parse 0
+  tests/test_parse 1
+  tests/test_parse 2
+  tests/test_parse 3
+  tests/test_parse 4
+  tests/test_parse 5
+  tests/test_parse 6
+  tests/test_parse 7
+  tests/test_parse 8
+  tests/test_parse 9
+  tests/test_parse 10
+  tests/test_parse 11
+  tests/test_parse 12
+  tests/test_parse 13
+  tests/test_parse 14
+  tests/test_parse 15
+  tests/test_parse 16
+  tests/test_parse 17
+  tests/test_parse 18
+  tests/test_parse 19
+  tests/test_parse 20
+  tests/test_parse 21
+  tests/test_parse 22
+  tests/test_parse 23
+  tests/test_parse 24
+  tests/test_parse 25
+  tests/test_parse 26
+  tests/test_parse 27
+  tests/test_parse 28
+  tests/test_parse 29
+  tests/test_parse 30
+  tests/test_parse 31
+  tests/test_parse 32
+  tests/test_parse 33
+  tests/test_parse 34
+  tests/test_parse 35
+  tests/test_parse 36
+  tests/test_parse 37
+  tests/test_parse 38
+  tests/test_parse 39
+  tests/test_parse 40
+  tests/test_parse 41
+  tests/test_parse 42
+  tests/test_parse 43
+  tests/test_parse 44
+  tests/test_parse 45
+  tests/test_parse 46
+  tests/test_parse 47
+  tests/test_parse 48
+  tests/test_parse 49
+  tests/test_parse 50
+  tests/test_parse 51
+  tests/test_parse 52
+  tests/test_parse 53
+  tests/test_parse 54
+  tests/test_parse 55
+  tests/test_parse 56
+  tests/test_parse 57
+  tests/test_parse 58
+  tests/test_parse 59
+  tests/test_parse 60
+  tests/test_parse 61
+  tests/test_parse 62
+  tests/test_parse 63
+  tests/test_parse 64
+  tests/test_parse 65
+  tests/test_parse 66
+  tests/test_parse 67
+  tests/test_parse 68
+  tests/test_parse 69
+  tests/test_parse 70
+  tests/test_parse 71
+  tests/test_parse 72
+  tests/test_parse 73
+  tests/test_parse 74
+  tests/test_parse 75
+  tests/test_parse 76
+  tests/test_parse 77
+  tests/test_parse 78
+  tests/test_parse 79
+  tests/test_parse 80
+  tests/test_parse 81
+  tests/test_parse 82
+  tests/test_parse 83
+  tests/test_parse 84
+  tests/test_parse 85
+  tests/test_parse 86
+  tests/test_parse 87
+  tests/test_parse 88
+  tests/test_parse 89
+  tests/test_parse 90
+  tests/test_parse 91
+  tests/test_parse 92
+  tests/test_parse 93
+  tests/test_parse 94
+  tests/test_parse 95
+  tests/test_parse 96
+  tests/test_parse 97
+  tests/test_parse 98
+  tests/test_parse 99
+  tests/test_parse 100
+  tests/test_parse 101
+  tests/test_parse 102
+  tests/test_parse 103
+  tests/test_parse 104
+  tests/test_parse 105
+  tests/test_parse 106
+  tests/test_parse 107
+  tests/test_parse 108
+  tests/test_parse 109
+  tests/test_parse 110
+  tests/test_parse 111
+  tests/test_parse 112
+  tests/test_parse 113
+  tests/test_parse 114
+  tests/test_parse 115
+  tests/test_parse 116
+  tests/test_parse 117
+  tests/test_parse 118
+  tests/test_parse 119
+  tests/test_parse 120
+  tests/test_parse 121
+  tests/test_parse 122
+  tests/test_parse 123
+  tests/test_parse 124
+  tests/test_parse 125
+  tests/test_parse 126
+  tests/test_parse 127
+  tests/test_parse 128
+  tests/test_parse 129
+  tests/test_parse 130
+  tests/test_parse 131
+  tests/test_parse 132
+  tests/test_parse 133
+  tests/test_parse 134
+  tests/test_parse 135
+  tests/test_parse 136
+  tests/test_parse 137
+  tests/test_parse 138
+  tests/test_parse 139
+  tests/test_parse 140
+  tests/test_parse 141
+  tests/test_parse 142
+  tests/test_parse 143
+  tests/test_parse 144
+  tests/test_parse 145
+  tests/test_parse 146
+  tests/test_parse 147
+  tests/test_parse 148
+  tests/test_parse 149
+  tests/test_parse 150
+  tests/test_parse 151
+  tests/test_parse 152
+  tests/test_parse 153
+  tests/test_parse 154
+  tests/test_parse 155
+  tests/test_parse 156
+  tests/test_parse 157
+  tests/test_parse 158
+  tests/test_parse 159
+  tests/test_parse 160
+  tests/test_parse 161
+  tests/test_parse 162
+  tests/test_parse 163
+  tests/test_parse 164
+  tests/test_parse 165
+  tests/test_parse 166
+  tests/test_parse 167
+  tests/test_parse 168
+  tests/test_parse 169
+  tests/test_parse 170
+  tests/test_parse 171
+  tests/test_parse 172
+  tests/test_parse 173
+  tests/test_parse 174
+  tests/test_parse 175
+  tests/test_parse 176
+  tests/test_parse 177
+  tests/test_parse 178
+  tests/test_parse 179
+  tests/test_parse 180
+  tests/test_parse 181
+  tests/test_parse 182
+  tests/test_parse 183
+  tests/test_parse 184
+  tests/test_parse 185
+  tests/test_parse 186
+  tests/test_parse 187
+  tests/test_parse 188
+  tests/test_parse 189
+  tests/test_parse 190
+  tests/test_parse 191
+  tests/test_parse 192
+  tests/test_parse 193
+  tests/test_parse 194
+  tests/test_parse 195
+  tests/test_parse 196
+  tests/test_parse 197
+  tests/test_parse 198
+  tests/test_parse 199
+  tests/test_parse 200
+  tests/test_parse 201
+  tests/test_parse 202
+  tests/test_parse 203
+  tests/test_parse 204
+  tests/test_parse 205
+  tests/test_parse 206
+  tests/test_parse 207
+  tests/test_parse 208
+  tests/test_parse 209
+  tests/test_parse 210
+  tests/test_parse 211
+  tests/test_parse 212
+  tests/test_parse 213
+  tests/test_parse 214
+  tests/test_parse 215
+  tests/test_parse 216
+  tests/test_parse 217
+  tests/test_parse 218
+  tests/test_parse 219
+  tests/test_parse 220
+  tests/test_parse 221
+  tests/test_parse 222
+  tests/test_parse 223
+  tests/test_parse 224
+  tests/test_parse 225
+  tests/test_parse 226
+  tests/test_parse 227
+  tests/test_parse 228
+  tests/test_parse 229
+  tests/test_parse 230
+  tests/test_parse 231
+  tests/test_parse 232
+  tests/test_parse 233
+  tests/test_parse 234
+  tests/test_parse 235
+  tests/test_parse 236
+  tests/test_parse 237
+  tests/test_parse 238
+  tests/test_parse 239
+  tests/test_parse 240
+  tests/test_parse 241
+  tests/test_parse 242
+  tests/test_parse 243
+  tests/test_parse 244
+  tests/test_parse 245
+  tests/test_parse 246
+  tests/test_parse 247
+  tests/test_parse 248
+  tests/test_parse 249
+  tests/test_parse 250
+  tests/test_parse 251
+  tests/test_parse 252
+  tests/test_parse 253
+  tests/test_parse 254
+  tests/test_parse 255
+  tests/test_parse 256
+  tests/test_parse 257
+  tests/test_parse 258
+  tests/test_parse 259
+  tests/test_parse 260
+  tests/test_parse 261
+  tests/test_parse 262
+  tests/test_parse 263
+  tests/test_parse 264
+  tests/test_parse 265
+  tests/test_parse 266
+
+  
+test-case: 
+
+test-command: | # 테스트 실행
+  bash -c "@testcase@"
+
+test-coverage-command: | # 커버리지 테스트 실행 / 테스트 대상을 입력받아서 하나씩 실행할 수 있어야 함
+  bash -c "@testcase@"
