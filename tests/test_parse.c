@@ -92,8 +92,8 @@ static void single_incremental_parse(const char *test_string, int clear_serializ
 
 static void single_basic_parse(const char *test_string, int clear_serializer)
 {
-	printf("test_count = %d\n", test_count); 
-	printf("test_index = %d\n", test_index); 
+	// printf("test_count = %d\n", test_count); 
+	// printf("test_index = %d\n", test_index); 
 	if(test_count != test_index ) {
 		test_count++;
 		return;
@@ -613,9 +613,9 @@ static void test_incremental_parse()
 	tok = json_tokener_new();
 	for (ii = 0; incremental_steps[ii].string_to_parse != NULL; ii++)
 	{
-	printf("test_count = %d\n", test_count); 
-	printf("test_index = %d\n", test_index); 
-	printf("fail_count = %d\n", fail_count);
+	// printf("test_count = %d\n", test_count); 
+	// printf("test_index = %d\n", test_index); 
+	// printf("fail_count = %d\n", fail_count);
 		if(fail_count) {
 			exit(fail_count);
 		}
