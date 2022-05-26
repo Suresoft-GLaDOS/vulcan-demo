@@ -211,6 +211,7 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
         ni = i + step + 1;
         if (ni < re_len && re[ni] == '?') {
           non_greedy = 0; // buggy
+	  printf("non_greedy = %d\n", non_greedy);
           ni++;
         }
 
