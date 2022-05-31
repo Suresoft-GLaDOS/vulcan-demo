@@ -1,15 +1,16 @@
 --- # Start
 name: example
 
-# 유저의 github 저장소 정보
-url:
-docker-image: 
 
 # predefined docker-image를 사용하되, 추가적인 설정이 필요한 경우 이렇게 정의
 extra-build-env-setting-commands: 
 
 test-candidates: |
   example.c
+
+gcov-exclusion-list: |
+  test.o
+  *test*
 
 time-out: 3600
 max-patch-number : 500

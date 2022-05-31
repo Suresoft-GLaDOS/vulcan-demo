@@ -1,4 +1,4 @@
-name: Vulcan Demo
+name: vulcan(example-2-wip-gcov-exclusion-list)
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Test vulcan action
-        uses: Suresoft-GLaDOS/vulcan-action@main
+        uses: Suresoft-GLaDOS/vulcan-action@wip-gcov-exclusion-list
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: vulcan_target
