@@ -210,7 +210,8 @@ static int bar(const char *re, int re_len, const char *s, int s_len,
         /* Points to the regexp code after the quantifier */
         ni = i + step + 1;
         if (ni < re_len && re[ni] == '?') {
-          non_greedy = 0; // buggy
+          non_greedy = (n + ni);
+ // buggy
           ni++;
         }
 
